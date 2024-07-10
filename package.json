@@ -2,13 +2,18 @@
   "name": "countdown",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "jest"
+    "test": "node --experimental-vm-modules ./node_modules/.bin/jest"
   },
   "author": "Rafal",
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@eslint/js": "^9.6.0",
+    "@types/jest": "^29.5.12",
+    "eslint": "^9.6.0",
+    "globals": "^15.8.0",
     "jest": "^29.7.0"
   }
 }
