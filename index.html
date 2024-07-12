@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Countdown</title>
+
+    <!-- alternatives for this/ optimalization -->
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- ARIA labels, accessibility -->
+    <div class="container">
+      <header>
+        <h1>We're launching cotenant soon</h1>
+      </header>
+      <div class="timer">
+        <div class="timer-item">
+          <span class="timer-value" id="days">08</span>
+          <span class="timer-label">days</span>
+        </div>
+        <div class="timer-item">
+          <span class="timer-value" id="hours">23</span>
+          <span class="timer-label">hours</span>
+        </div>
+        <div class="timer-item">
+          <span class="timer-value" id="minutes">55</span>
+          <span class="timer-label">minutes</span>
+        </div>
+        <div class="timer-item">
+          <span class="timer-value" id="seconds">41</span>
+          <span class="timer-label">seconds</span>
+        </div>
+      </div>
+      <footer>
+        <span>linkedin</span>
+        <span>instagram</span>
+        <span>edit</span>
+      </footer>
+    </div>
+    <script src="/src/app.js" type="module"></script>
+  </body>
+</html>

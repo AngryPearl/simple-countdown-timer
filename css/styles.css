@@ -1,0 +1,49 @@
+body {
+  margin: 0;
+  font-family: "Red Hat Text";
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.container {
+  height: 100vh;
+
+  /* svg optimalization, lazy load */
+  background-image: url(/assets/pattern-hills.svg), url(/assets/bg-stars.svg);
+
+  /* TODO: add variables for colors */
+  background-color: hsl(235, 16%, 14%);
+
+  background-repeat: no-repeat;
+  background-position: bottom, top;
+  background-size: contain;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-transform: uppercase;
+}
+
+header {
+  /* font-size: 1rem; #todo */
+  color: hsl(0, 0%, 100%);
+}
+
+.timer {
+  display: flex;
+  gap: 3rem;
+}
+
+.timer-item {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.timer-value {
+  font-size: 5rem;
+  color: hsl(345, 95%, 68%);
+}
+
+.timer-label {
+  color: hsl(237, 18%, 59%);
+}
