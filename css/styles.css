@@ -1,5 +1,9 @@
-body {
+* {
   margin: 0;
+  padding: 0;
+}
+
+body {
   font-family: "Red Hat Text";
   font-weight: 700;
   font-size: 14px;
@@ -7,24 +11,31 @@ body {
 
 .container {
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   /* svg optimalization, lazy load */
-  background-image: url(/assets/pattern-hills.svg), url(/assets/bg-stars.svg);
-
   /* TODO: add variables for colors */
+  background-image: url(/assets/pattern-hills.svg), url(/assets/bg-stars.svg);
   background-color: hsl(235, 16%, 14%);
-
   background-repeat: no-repeat;
   background-position: bottom, top;
   background-size: contain;
+}
+
+main {
   display: flex;
-  align-items: center;
+  margin-top: 10rem;
   flex-direction: column;
+  align-items: center;
   text-transform: uppercase;
 }
 
-header {
-  /* font-size: 1rem; #todo */
+header h1 {
+  font-size: 1.2rem;
+  letter-spacing: 0.5rem;
+  margin-bottom: 5rem;
   color: hsl(0, 0%, 100%);
 }
 
@@ -42,8 +53,45 @@ header {
 .timer-value {
   font-size: 5rem;
   color: hsl(345, 95%, 68%);
+  background-color: hsl(236, 21%, 26%);
+  padding: 1rem;
+  border-bottom: 10px solid hsl(234, 17%, 12%);
 }
 
 .timer-label {
+  color: hsl(237, 18%, 59%);
+  letter-spacing: 0.3rem;
+}
+
+footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+footer ul {
+  display: flex;
+  gap: 1rem;
+}
+
+footer li {
+  display: inline;
+  padding: 0;
+}
+
+.attribution {
+  position: absolute;
+  top: auto;
+  right: auto;
+  left: auto;
+  bottom: 5px;
+  font-weight: 400;
+  opacity: 0.5;
+  font-size: 0.7rem;
+  color: hsl(237, 18%, 59%);
+}
+
+.attribution a {
   color: hsl(237, 18%, 59%);
 }
