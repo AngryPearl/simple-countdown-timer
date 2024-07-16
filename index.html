@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -21,24 +21,52 @@
         <header>
           <h1>We're launching cotenant soon</h1>
         </header>
-        <div class="timer">
+        <section aria-label="Countdown Timer" class="timer">
           <div class="timer-item">
-            <span class="timer-value" id="days">08</span>
+            <div class="timer-card" id="days">
+              <div class="card-value-top">02</div>
+              <div class="card-value-bottom">02</div>
+              <div class="flip-cards">
+                <div class="flip-card-top">02</div>
+                <div class="flip-card-bottom">02</div>
+              </div>
+            </div>
             <span class="timer-label">days</span>
           </div>
           <div class="timer-item">
-            <span class="timer-value" id="hours">23</span>
+            <div class="timer-card" id="hours">
+              <div class="card-value-top">10</div>
+              <div class="card-value-bottom">10</div>
+              <div class="flip-cards">
+                <div class="flip-card-top">10</div>
+                <div class="flip-card-bottom">10</div>
+              </div>
+            </div>
             <span class="timer-label">hours</span>
           </div>
           <div class="timer-item">
-            <span class="timer-value" id="minutes">55</span>
+            <div class="timer-card" id="minutes">
+              <div class="card-value-top">24</div>
+              <div class="card-value-bottom">24</div>
+              <div class="flip-cards">
+                <div class="flip-card-top">24</div>
+                <div class="flip-card-bottom">24</div>
+              </div>
+            </div>
             <span class="timer-label">minutes</span>
           </div>
           <div class="timer-item">
-            <span class="timer-value" id="seconds">41</span>
+            <div class="timer-card" id="seconds">
+              <div class="card-value-top">41</div>
+              <div class="card-value-bottom">42</div>
+              <div class="flip-cards">
+                <div class="flip-card-top">41</div>
+                <div class="flip-card-bottom">42</div>
+              </div>
+            </div>
             <span class="timer-label">seconds</span>
           </div>
-        </div>
+        </section>
       </main>
       <footer>
         <ul>
@@ -76,6 +104,6 @@
         </div>
       </footer>
     </div>
-    <script src="/src/app.js" type="module"></script>
+    <script src="/src/app.js" type="module" defer></script>
   </body>
 </html>

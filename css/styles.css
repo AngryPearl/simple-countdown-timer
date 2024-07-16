@@ -1,71 +1,182 @@
+/* Variables */
+:root {
+  --blue-100: hsl(236, 21%, 26%);
+  --blue-200: hsl(242, 22%, 22%);
+  --blue-300: hsl(235, 15%, 14%);
+  --blue-400: hsl(245, 18%, 12%);
+  --primary-blue: hsl(237, 18%, 59%);
+  --primary-red: hsl(345, 95%, 68%);
+  --secondary-red: hsl(344, 58%, 58%);
+  --white: hsl(0, 0%, 100%);
+}
+
+/* Global */
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  font-family: "Red Hat Text";
+  font-family: "Red Hat Text", sans-serif;
+  font-size: 1rem;
   font-weight: 700;
-  font-size: 14px;
 }
 
 .container {
-  height: 100vh;
+  background:
+    url(/assets/pattern-hills.svg) bottom no-repeat,
+    url(/assets/bg-stars.svg) top no-repeat,
+    var(--blue-300);
+  background-size: contain;
   display: flex;
   flex-direction: column;
+  height: 100vh;
   justify-content: space-between;
-
-  /* svg optimalization, lazy load */
-  /* TODO: add variables for colors */
-  background-image: url(/assets/pattern-hills.svg), url(/assets/bg-stars.svg);
-  background-color: hsl(235, 16%, 14%);
-  background-repeat: no-repeat;
-  background-position: bottom, top;
-  background-size: contain;
 }
 
 main {
-  display: flex;
-  margin-top: 10rem;
-  flex-direction: column;
   align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10rem;
   text-transform: uppercase;
 }
 
 header h1 {
+  color: var(--white);
   font-size: 1.2rem;
   letter-spacing: 0.5rem;
   margin-bottom: 5rem;
-  color: hsl(0, 0%, 100%);
 }
 
+/* Timer */
 .timer {
   display: flex;
   gap: 3rem;
 }
 
 .timer-item {
-  display: flex;
   align-items: center;
+  display: flex;
   flex-direction: column;
 }
 
-.timer-value {
+.timer-card {
+  align-items: center;
+  background: linear-gradient(var(--blue-200) 50%, var(--blue-100) 50%);
+  border-radius: 0.6rem;
+  color: var(--primary-red);
+  display: flex;
   font-size: 5rem;
-  color: hsl(345, 95%, 68%);
-  background-color: hsl(236, 21%, 26%);
-  padding: 1rem;
-  border-bottom: 10px solid hsl(234, 17%, 12%);
+  height: 9rem;
+  justify-content: center;
+  position: relative;
+  width: 9rem;
+}
+
+.timer-card::before,
+.timer-card::after {
+  background-color: var(--blue-300);
+  border-radius: 50%;
+  content: "";
+  display: block;
+  height: 12px;
+  position: absolute;
+  width: 12px;
+}
+
+.timer-card::after {
+  right: -6px;
+}
+
+.timer-card::before {
+  left: -6px;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(90deg);
+  }
+}
+
+.card-value-top,
+.card-value-bottom {
+  align-items: center;
+  display: flex;
+  height: 50%;
+  justify-content: center;
+  overflow: hidden;
+  position: absolute;
+}
+
+.card-value-top {
+  padding-top: 50%;
+  top: 0;
+}
+
+.card-value-bottom {
+  padding-bottom: 50%;
+  top: 50%;
 }
 
 .timer-label {
-  color: hsl(237, 18%, 59%);
+  color: var(--primary-blue);
   letter-spacing: 0.3rem;
+  margin-top: 1rem;
 }
 
+/* Timer moving parts */
+.flip-cards {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 9rem;
+  justify-content: center;
+  position: relative;
+  width: 9rem;
+}
+
+.flip-card-animate {
+  animation: rotate 1s;
+}
+
+.flip-card-top,
+.flip-card-bottom {
+  align-items: center;
+  border-radius: 0.6rem;
+  display: flex;
+  height: 50%;
+  justify-content: center;
+  overflow: hidden;
+  position: absolute;
+  width: 9rem;
+  z-index: 1;
+}
+
+.flip-card-top {
+  background-color: var(--blue-200);
+  box-shadow: 0 -5px 2px var(--blue-400);
+  padding-top: 50%;
+  top: 0;
+  transform-origin: bottom;
+}
+
+.flip-card-bottom {
+  animation-direction: reverse;
+  background-color: var(--blue-100);
+  box-shadow: 0 5px 2px var(--blue-400);
+  padding-bottom: 50%;
+  top: 50%;
+  transform-origin: top;
+}
+
+/* Footer */
 footer {
   display: flex;
-  flex-direction: row;
   justify-content: center;
   margin-bottom: 2rem;
 }
@@ -77,21 +188,20 @@ footer ul {
 
 footer li {
   display: inline;
-  padding: 0;
 }
 
 .attribution {
-  position: absolute;
-  top: auto;
-  right: auto;
-  left: auto;
-  bottom: 5px;
-  font-weight: 400;
-  opacity: 0.5;
+  bottom: 0.5rem;
+  color: var(--primary-blue);
   font-size: 0.7rem;
-  color: hsl(237, 18%, 59%);
+  font-weight: 400;
+  left: auto;
+  opacity: 0.5;
+  position: absolute;
+  right: auto;
+  top: auto;
 }
 
 .attribution a {
-  color: hsl(237, 18%, 59%);
+  color: var(--primary-blue);
 }
