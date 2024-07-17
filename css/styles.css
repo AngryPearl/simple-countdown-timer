@@ -207,3 +207,36 @@ footer li {
 .attribution a {
   color: var(--primary-blue);
 }
+
+/* Mobile styles */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .timer {
+    gap: 1rem;
+  }
+
+  .timer-card {
+    font-size: 3rem;
+    height: 5rem;
+    width: 5rem;
+  }
+
+  .flip-cards {
+    height: 5rem;
+    width: 5rem;
+  }
+
+  .flip-card-top,
+  .flip-card-bottom {
+    width: 5rem;
+  }
+
+  .timer-label {
+    letter-spacing: 0.1rem;
+    margin-top: 0.5rem;
+  }
+}
