@@ -94,15 +94,6 @@ header h1 {
   left: -6px;
 }
 
-@keyframes rotate {
-  0% {
-    transform: rotateX(0deg);
-  }
-  100% {
-    transform: rotateX(90deg);
-  }
-}
-
 .card-value-top,
 .card-value-bottom {
   align-items: center;
@@ -130,6 +121,17 @@ header h1 {
 }
 
 /* Timer moving parts */
+@keyframes rotate {
+  0% {
+    transform: rotateX(0deg);
+  }
+  /* delay for animation for synchronize top and bottom */
+  50%,
+  100% {
+    transform: rotateX(90deg);
+  }
+}
+
 .flip-cards {
   align-items: center;
   display: flex;
@@ -141,7 +143,7 @@ header h1 {
 }
 
 .flip-card-animate {
-  animation: rotate 1s;
+  animation: rotate 0.9s linear;
 }
 
 .flip-card-top,
