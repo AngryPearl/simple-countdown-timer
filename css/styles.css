@@ -288,6 +288,15 @@ footer li {
   padding: 0.5rem;
 }
 
+/* Text Input */
+.text-input {
+  border: 1px solid lightgray;
+  border-radius: 0.6rem;
+  height: 2rem;
+  width: 12rem;
+  padding: 0.5rem;
+}
+
 /* Toggle Switch */
 .switch {
   position: relative;

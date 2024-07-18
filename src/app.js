@@ -3,10 +3,6 @@ let hour = 0;
 let minute = 0;
 let second = 0;
 let endTime = new Date("Jul 31, 2024 12:00:00"); //current time + 30 dni
-if (localStorage.getItem("end-time-value")) {
-  endTime = new Date(localStorage.getItem("end-time-value"));
-}
-
 const timeInput = document.getElementById("time-input");
 document.getElementById("time-input").min = new Date()
   .toISOString()
@@ -14,6 +10,19 @@ document.getElementById("time-input").min = new Date()
 document.getElementById("time-input").value = new Date()
   .toISOString()
   .slice(0, 16);
+
+if (localStorage.getItem("end-time-value")) {
+  endTime = new Date(localStorage.getItem("end-time-value"));
+  document.getElementById("time-input").value =
+    localStorage.getItem("end-time-value");
+}
+if (localStorage.getItem("text-value")) {
+  document.getElementById("heading-title").innerText =
+    localStorage.getItem("text-value");
+  document
+    .getElementById("text-input")
+    .setAttribute("value", localStorage.getItem("text-value"));
+}
 
 setInterval(() => {
   const time = new Date();
@@ -91,6 +100,11 @@ saveButton.addEventListener("click", () => {
   const timeInputValue = document.getElementById("time-input").value;
   localStorage.setItem("end-time-value", timeInputValue);
   endTime = new Date(timeInputValue);
+
+  const textInputValue = document.getElementById("text-input").value;
+  localStorage.setItem("text-value", textInputValue);
+  document.getElementById("heading-title").innerText = textInputValue;
+
   document.getElementById("modal").classList.add("hidden");
   document.getElementById("overlay").classList.add("hidden");
 });
