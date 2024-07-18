@@ -2,9 +2,20 @@ let day = 0;
 let hour = 0;
 let minute = 0;
 let second = 0;
+let endTime = new Date("Jul 31, 2024 12:00:00"); //current time + 30 dni
+if (localStorage.getItem("end-time-value")) {
+  endTime = new Date(localStorage.getItem("end-time-value"));
+}
+
+const timeInput = document.getElementById("time-input");
+document.getElementById("time-input").min = new Date()
+  .toISOString()
+  .slice(0, 16);
+document.getElementById("time-input").value = new Date()
+  .toISOString()
+  .slice(0, 16);
 
 setInterval(() => {
-  const endTime = new Date("Jul 31, 2024 12:00:00");
   const time = new Date();
   const remaining = endTime - time;
   day = Math.floor(remaining / (1000 * 60 * 60 * 24))
@@ -68,3 +79,18 @@ function flipCard(name, value) {
     elementFlipTop.addEventListener("animationend", finishFlip);
   }
 }
+
+const editButton = document.getElementById("edit-button");
+editButton.addEventListener("click", () => {
+  document.getElementById("modal").classList.remove("hidden");
+  document.getElementById("overlay").classList.remove("hidden");
+});
+
+const saveButton = document.getElementById("save-button");
+saveButton.addEventListener("click", () => {
+  const timeInputValue = document.getElementById("time-input").value;
+  localStorage.setItem("end-time-value", timeInputValue);
+  endTime = new Date(timeInputValue);
+  document.getElementById("modal").classList.add("hidden");
+  document.getElementById("overlay").classList.add("hidden");
+});

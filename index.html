@@ -71,13 +71,17 @@
       <footer>
         <ul>
           <li>
-            <a href="/">
-              <img src="/assets/icon-facebook.svg" alt="icon-facebook" />
-            </a>
+            <span>
+              <img
+                src="/assets/icon-edit.svg"
+                alt="icon-edit"
+                id="edit-button"
+              />
+            </span>
           </li>
           <li>
-            <a href="/">
-              <img src="/assets/icon-pinterest.svg" alt="icon-pinterest" />
+            <a href="https://www.linkedin.com/in/rafal-bogusz">
+              <img src="/assets/icon-linkedin.svg" alt="icon-linkedin" />
             </a>
           </li>
           <li>
@@ -103,6 +107,25 @@
           >.
         </div>
       </footer>
+
+      <section id="modal" class="modal hidden">
+        <h2>Settings</h2>
+        <div class="modal-inputs">
+          <div class="modal-input">
+            <p>Time</p>
+            <input id="time-input" class="time-input" type="datetime-local" />
+          </div>
+          <div class="modal-input">
+            <p>Save in Cookies</p>
+            <label class="switch">
+              <input type="checkbox" checked />
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+        <button id="save-button">Apply</button>
+      </section>
+      <div id="overlay" class="overlay hidden"></div>
     </div>
     <script src="/src/app.js" type="module" defer></script>
   </body>
