@@ -40,14 +40,23 @@ setInterval(() => {
     .toString()
     .padStart(2, "0");
 
-  document.getElementById("days-top").innerHTML = day;
-  document.getElementById("hours-top").innerHTML = hour;
-  document.getElementById("minutes-top").innerHTML = minute;
-  document.getElementById("seconds-top").innerHTML = second;
-  flipCard("days", day);
-  flipCard("hours", hour);
-  flipCard("minutes", minute);
-  flipCard("seconds", second);
+  if (remaining < 0) {
+    document.getElementById("fireworks").style.display = "block";
+    day = "ko";
+    hour = "ni";
+    minute = "ec";
+    second = "😆";
+  } else {
+    document.getElementById("fireworks").style.display = "none";
+    document.getElementById("days-top").innerHTML = day;
+    document.getElementById("hours-top").innerHTML = hour;
+    document.getElementById("minutes-top").innerHTML = minute;
+    document.getElementById("seconds-top").innerHTML = second;
+    flipCard("days", day);
+    flipCard("hours", hour);
+    flipCard("minutes", minute);
+    flipCard("seconds", second);
+  }
 }, 1000);
 
 setTimeout(() => {
