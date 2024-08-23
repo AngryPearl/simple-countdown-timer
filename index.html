@@ -4,10 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Countdown</title>
+    <meta
+      name="description"
+      content="Animated timer with ability to set own end time and heading."
+    />
 
     <!-- alternatives for this/ optimalization -->
     <link rel="stylesheet" href="css/styles.css" />
-    <link rel="stylesheet" href="css/fireworks.css" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -18,100 +21,93 @@
   </head>
   <body>
     <!-- ARIA labels, accessibility -->
-    <div class="container">
-      <main>
-        <div id="fireworks">
-          <div class="firework"></div>
-          <div class="firework"></div>
-          <div class="firework"></div>
-          <div class="firework"></div>
-          <div class="firework"></div>
-          <div class="firework"></div>
-          <div class="firework"></div>
-          <div class="firework"></div>
-          <div class="firework"></div>
-          <div class="firework"></div>
-          <div class="firework"></div>
-          <div class="firework"></div>
-          <div class="firework"></div>
-          <div class="firework"></div>
-          <div class="firework"></div>
-          <div class="firework"></div>
-          <div class="firework"></div>
-          <div class="firework"></div>
-          <div class="firework"></div>
-          <div class="firework"></div>
-          <div class="firework"></div>
-        </div>
+    <div class="flex-container">
+      <main role="main">
         <header>
-          <h1 id="heading-title">We're launching cotenant soon</h1>
+          <h1 id="heading-primary">We're launching soon</h1>
         </header>
-        <section aria-label="Countdown Timer" class="timer">
-          <div class="timer-item">
-            <div class="timer-card" id="days">
-              <div class="card-value-top" id="days-top">00</div>
-              <div class="card-value-bottom" id="days-bottom">00</div>
+        <section aria-label="Countdown Timer" class="timer-container">
+          <div class="timer-item" aria-live="polite">
+            <div class="timer-card">
+              <div class="card-top days">00</div>
+              <div class="card-bottom days">00</div>
               <div class="flip-cards">
-                <div class="flip-card-top" id="days-flip-top">00</div>
-                <div class="flip-card-bottom" id="days-flip-bottom">00</div>
+                <div class="flip-card-top days">00</div>
+                <div class="flip-card-bottom days">00</div>
               </div>
             </div>
             <span class="timer-label">days</span>
           </div>
-          <div class="timer-item">
-            <div class="timer-card" id="hours">
-              <div class="card-value-top" id="hours-top">00</div>
-              <div class="card-value-bottom" id="hours-bottom">00</div>
+          <div class="timer-item" aria-live="polite">
+            <div class="timer-card">
+              <div class="card-top hours">00</div>
+              <div class="card-bottom hours">00</div>
               <div class="flip-cards">
-                <div class="flip-card-top" id="hours-flip-top">00</div>
-                <div class="flip-card-bottom" id="hours-flip-bottom">00</div>
+                <div class="flip-card-top hours">00</div>
+                <div class="flip-card-bottom hours">00</div>
               </div>
             </div>
             <span class="timer-label">hours</span>
           </div>
-          <div class="timer-item">
-            <div class="timer-card" id="minutes">
-              <div class="card-value-top" id="minutes-top">00</div>
-              <div class="card-value-bottom" id="minutes-bottom">00</div>
+          <div class="timer-item" aria-live="polite">
+            <div class="timer-card">
+              <div class="card-top minutes">00</div>
+              <div class="card-bottom minutes">00</div>
               <div class="flip-cards">
-                <div class="flip-card-top" id="minutes-flip-top">00</div>
-                <div class="flip-card-bottom" id="minutes-flip-bottom">00</div>
+                <div class="flip-card-top minutes">00</div>
+                <div class="flip-card-bottom minutes">00</div>
               </div>
             </div>
             <span class="timer-label">minutes</span>
           </div>
-          <div class="timer-item">
-            <div class="timer-card" id="seconds">
-              <div class="card-value-top" id="seconds-top">00</div>
-              <div class="card-value-bottom" id="seconds-bottom">00</div>
+          <div class="timer-item" aria-live="polite">
+            <div class="timer-card">
+              <div class="card-top seconds">00</div>
+              <div class="card-bottom seconds">00</div>
               <div class="flip-cards">
-                <div class="flip-card-top" id="seconds-flip-top">00</div>
-                <div class="flip-card-bottom" id="seconds-flip-bottom">00</div>
+                <div class="flip-card-top seconds">00</div>
+                <div class="flip-card-bottom seconds">00</div>
               </div>
             </div>
             <span class="timer-label">seconds</span>
           </div>
         </section>
+        <!-- TODO -->
+        <div id="deadline-fireworks-container"></div>
       </main>
       <footer>
         <ul>
           <li>
             <span>
               <img
+                class="footer-img"
                 src="/assets/icon-edit.svg"
-                alt="icon-edit"
+                alt="Edit icon"
                 id="edit-button"
               />
             </span>
           </li>
           <li>
-            <a href="https://www.linkedin.com/in/rafal-bogusz">
-              <img src="/assets/icon-linkedin.svg" alt="icon-linkedin" />
+            <a
+              rel="noopener"
+              href="https://www.linkedin.com/in/rafal-bogusz"
+              target="_blank"
+            >
+              <img
+                class="footer-img"
+                src="/assets/icon-linkedin.svg"
+                alt="LinkedIn icon"
+              />
             </a>
           </li>
+          <!-- Replace with portfolio page -->
           <li>
-            <a href="/">
-              <img src="/assets/icon-instagram.svg" alt="icon-instagram" />
+            <a rel="noopener" href="/">
+              <img
+                class="footer-img"
+                src="/assets/icon-instagram.svg"
+                alt="Portfolio icon"
+              />
             </a>
           </li>
         </ul>
@@ -128,31 +124,31 @@
             rel="noopener"
             href="https://github.com/AngryPearl"
             aria-label="Go to @angrypearl's github"
+            target="_blank"
             >AngryPearl</a
           >.
         </div>
       </footer>
 
-      <section id="modal" class="modal hidden">
+      <section id="edit-modal" class="edit-modal hidden">
         <h2>Settings</h2>
         <div class="modal-inputs">
           <div class="modal-input">
             <p>Text</p>
             <input
-              id="text-input"
-              class="text-input"
+              id="heading-text-input"
               type="text"
-              value="We're launching cotenant soon"
+              value="We're launching soon"
             />
           </div>
           <div class="modal-input">
-            <p>Time</p>
-            <input id="time-input" class="time-input" type="datetime-local" />
+            <p>Deadline</p>
+            <input id="deadline-input" type="datetime-local" />
           </div>
           <div class="modal-input">
             <p>Save in Cookies</p>
-            <label class="switch">
-              <input type="checkbox" checked />
+            <label class="cookies-switch">
+              <input id="cookies-checkbox" type="checkbox" checked />
               <span class="slider"></span>
             </label>
           </div>

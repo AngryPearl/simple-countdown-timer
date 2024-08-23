@@ -3,24 +3,24 @@ let hour = 0;
 let minute = 0;
 let second = 0;
 let endTime = new Date("Jul 31, 2024 12:00:00"); //current time + 30 dni
-const timeInput = document.getElementById("time-input");
-document.getElementById("time-input").min = new Date()
+const timeInput = document.getElementById("deadline-input");
+document.getElementById("deadline-input").min = new Date()
   .toISOString()
   .slice(0, 16);
-document.getElementById("time-input").value = new Date()
+document.getElementById("deadline-input").value = new Date()
   .toISOString()
   .slice(0, 16);
 
 if (localStorage.getItem("end-time-value")) {
   endTime = new Date(localStorage.getItem("end-time-value"));
-  document.getElementById("time-input").value =
+  document.getElementById("deadline-input").value =
     localStorage.getItem("end-time-value");
 }
 if (localStorage.getItem("text-value")) {
-  document.getElementById("heading-title").innerText =
+  document.getElementById("heading-primary").innerText =
     localStorage.getItem("text-value");
   document
-    .getElementById("text-input")
+    .getElementById("heading-text-input")
     .setAttribute("value", localStorage.getItem("text-value"));
 }
 
@@ -41,17 +41,19 @@ setInterval(() => {
     .padStart(2, "0");
 
   if (remaining < 0) {
-    document.getElementById("fireworks").style.display = "block";
+    document.getElementById("deadline-fireworks-container").style.display =
+      "block";
     day = "ko";
     hour = "ni";
     minute = "ec";
-    second = "😆";
+    second = "😄";
   } else {
-    document.getElementById("fireworks").style.display = "none";
-    document.getElementById("days-top").innerHTML = day;
-    document.getElementById("hours-top").innerHTML = hour;
-    document.getElementById("minutes-top").innerHTML = minute;
-    document.getElementById("seconds-top").innerHTML = second;
+    document.getElementById("deadline-fireworks-container").style.display =
+      "none";
+    document.querySelector(".card-top.days").innerHTML = day;
+    document.querySelector(".card-top.hours").innerHTML = hour;
+    document.querySelector(".card-top.minutes").innerHTML = minute;
+    document.querySelector(".card-top.seconds").innerHTML = second;
     flipCard("days", day);
     flipCard("hours", hour);
     flipCard("minutes", minute);
@@ -61,30 +63,32 @@ setInterval(() => {
 
 setTimeout(() => {
   setInterval(() => {
-    document.getElementById("days-bottom").innerHTML = day;
-    document.getElementById("hours-bottom").innerHTML = hour;
-    document.getElementById("minutes-bottom").innerHTML = minute;
-    document.getElementById("seconds-bottom").innerHTML = second;
+    document.querySelector(".card-bottom.days").innerHTML = day;
+    document.querySelector(".card-bottom.hours").innerHTML = hour;
+    document.querySelector(".card-bottom.minutes").innerHTML = minute;
+    document.querySelector(".card-bottom.seconds").innerHTML = second;
   }, 1000);
 }, 800);
 
 setTimeout(() => {
   setInterval(() => {
-    document.getElementById("days-flip-top").innerHTML = day;
-    document.getElementById("days-flip-bottom").innerHTML = day;
-    document.getElementById("hours-flip-top").innerHTML = hour;
-    document.getElementById("hours-flip-bottom").innerHTML = hour;
-    document.getElementById("minutes-flip-top").innerHTML = minute;
-    document.getElementById("minutes-flip-bottom").innerHTML = minute;
-    document.getElementById("seconds-flip-top").innerHTML = second;
-    document.getElementById("seconds-flip-bottom").innerHTML = second;
+    document.querySelector(".flip-card-top.days").innerHTML = day;
+    document.querySelector(".flip-card-bottom.days").innerHTML = day;
+    document.querySelector(".flip-card-top.hours").innerHTML = hour;
+    document.querySelector(".flip-card-bottom.hours").innerHTML = hour;
+    document.querySelector(".flip-card-top.minutes").innerHTML = minute;
+    document.querySelector(".flip-card-bottom.minutes").innerHTML = minute;
+    document.querySelector(".flip-card-top.seconds").innerHTML = second;
+    document.querySelector(".flip-card-bottom.seconds").innerHTML = second;
   }, 1000);
 }, 450);
 
 function flipCard(name, value) {
-  if (value != document.getElementById(name + "-flip-top").innerText) {
-    const elementFlipTop = document.getElementById(name + "-flip-top");
-    const elementFlipBottom = document.getElementById(name + "-flip-bottom");
+  if (value != document.querySelector(".flip-card-top." + name).innerText) {
+    const elementFlipTop = document.querySelector(".flip-card-top." + name);
+    const elementFlipBottom = document.querySelector(
+      ".flip-card-bottom." + name,
+    );
     elementFlipTop.classList.add("flip-card-animate");
     elementFlipBottom.classList.add("flip-card-animate");
 
@@ -100,20 +104,20 @@ function flipCard(name, value) {
 
 const editButton = document.getElementById("edit-button");
 editButton.addEventListener("click", () => {
-  document.getElementById("modal").classList.remove("hidden");
+  document.getElementById("edit-modal").classList.remove("hidden");
   document.getElementById("overlay").classList.remove("hidden");
 });
 
 const saveButton = document.getElementById("save-button");
 saveButton.addEventListener("click", () => {
-  const timeInputValue = document.getElementById("time-input").value;
+  const timeInputValue = document.getElementById("deadline-input").value;
   localStorage.setItem("end-time-value", timeInputValue);
   endTime = new Date(timeInputValue);
 
-  const textInputValue = document.getElementById("text-input").value;
+  const textInputValue = document.getElementById("heading-text-input").value;
   localStorage.setItem("text-value", textInputValue);
-  document.getElementById("heading-title").innerText = textInputValue;
+  document.getElementById("heading-primary").innerText = textInputValue;
 
-  document.getElementById("modal").classList.add("hidden");
+  document.getElementById("edit-modal").classList.add("hidden");
   document.getElementById("overlay").classList.add("hidden");
 });

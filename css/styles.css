@@ -23,7 +23,7 @@ body {
   font-weight: 700;
 }
 
-.container {
+.flex-container {
   background:
     url(/assets/pattern-hills.svg) bottom no-repeat,
     url(/assets/bg-stars.svg) top no-repeat,
@@ -44,7 +44,7 @@ main {
   text-transform: uppercase;
 }
 
-header h1 {
+#heading-primary {
   color: var(--white);
   font-size: 1.2rem;
   letter-spacing: 0.5rem;
@@ -52,7 +52,7 @@ header h1 {
 }
 
 /* Timer */
-.timer {
+.timer-container {
   display: flex;
   gap: 3rem;
 }
@@ -95,8 +95,8 @@ header h1 {
   left: -6px;
 }
 
-.card-value-top,
-.card-value-bottom {
+.card-top,
+.card-bottom {
   align-items: center;
   display: flex;
   height: 50%;
@@ -105,12 +105,12 @@ header h1 {
   position: absolute;
 }
 
-.card-value-top {
+.card-top {
   padding-top: 50%;
   top: 0;
 }
 
-.card-value-bottom {
+.card-bottom {
   padding-bottom: 50%;
   top: 50%;
 }
@@ -194,6 +194,11 @@ footer li {
   cursor: pointer;
 }
 
+.footer-img {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
 .attribution {
   bottom: 0.5rem;
   color: var(--primary-blue);
@@ -211,7 +216,7 @@ footer li {
 }
 
 /* Modal */
-.modal {
+.edit-modal {
   border-radius: 0.6rem;
   background-color: var(--white);
   width: 25rem;
@@ -227,7 +232,7 @@ footer li {
   display: none;
 }
 
-.modal h2 {
+.edit-modal h2 {
   padding: 1.5rem;
   border-bottom: 1px solid lightgray;
 }
@@ -262,7 +267,7 @@ footer li {
   z-index: 1;
 }
 
-.modal button {
+.edit-modal button {
   margin: auto;
   margin-bottom: -1.5rem;
   padding: 1rem 2rem;
@@ -276,12 +281,12 @@ footer li {
   font-family: "Red Hat Text", sans-serif;
 }
 
-.modal button:hover {
+.edit-modal button:hover {
   background-color: var(--secondary-red);
 }
 
 /* Time Input */
-.time-input {
+#deadline-input {
   border: 1px solid lightgray;
   border-radius: 0.6rem;
   height: 2rem;
@@ -289,7 +294,7 @@ footer li {
 }
 
 /* Text Input */
-.text-input {
+#heading-text-input {
   border: 1px solid lightgray;
   border-radius: 0.6rem;
   height: 2rem;
@@ -298,14 +303,14 @@ footer li {
 }
 
 /* Toggle Switch */
-.switch {
+.cookies-switch {
   position: relative;
   display: inline-block;
   width: 4rem;
   height: 2rem;
 }
 
-.switch input {
+.cookies-switch input {
   opacity: 0;
   width: 0;
   height: 0;
@@ -345,12 +350,12 @@ input:checked + .slider:before {
 
 /* Mobile styles */
 @media (max-width: 600px) {
-  header h1 {
+  #heading-primary {
     font-size: 1.5rem;
     text-align: center;
   }
 
-  .timer {
+  .timer-container {
     gap: 1rem;
   }
 
@@ -375,3 +380,5 @@ input:checked + .slider:before {
     margin-top: 0.5rem;
   }
 }
+
+/* Fireworks */

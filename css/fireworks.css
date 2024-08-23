@@ -20,7 +20,8 @@ body {
   }
 }
 
-#fireworks {
+/* use hidden */
+#deadline-fireworks-container {
   display: none;
 }
 
@@ -30,9 +31,9 @@ body {
   100% { width: var(--finalSize); opacity: 0; }
 }
  */
-.firework,
-.firework::before,
-.firework::after {
+.deadline-firework,
+.deadline-firework::before,
+.deadline-firework::after {
   z-index: 2;
   --initialSize: 5vmin;
   --finalSize: 100vmin;
