@@ -15,7 +15,7 @@ This is a simple countdown timer that allows users to set a custom end time and 
 
 ### Preview
 
-You can try the timer hosted on Netlify [Here](#).
+You can try the timer hosted on Netlify [Here](https://countdown-timer-rb.netlify.app).
 
 ### Installation
 
