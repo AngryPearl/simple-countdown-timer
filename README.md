@@ -31,8 +31,4 @@ To make changes to this project, follow these steps:
 
 Some things need to be fixed:
 
-- file structure
 - Jest tests created along with JS code
-- JS refactor
-- cleanup project
-- upload to server
