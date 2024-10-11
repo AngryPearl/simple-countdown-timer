@@ -3,7 +3,7 @@ import {
   CountdownTimer,
   CountdownUIUpdater,
   ModalManager,
-} from "../src/app.js";
+} from "../../src/app.js";
 
 // Mocking DOM-related elements for testing
 const setupDOM = () => {

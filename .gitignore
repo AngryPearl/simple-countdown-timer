@@ -36,3 +36,7 @@ Thumbs.db
 coverage/
 *.min.js
 *.min.css
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
