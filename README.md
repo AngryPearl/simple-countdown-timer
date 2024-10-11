@@ -4,7 +4,7 @@
 
 **Animated timer with ability to set own end time and heading.**
 
-This is a simple countdown timer that allows users to set a custom end time and heading. The project was created as a starter portfolio piece and as a tool for counting down to an event for a friend. The app is written in **Vanilla JS** as a warm-up before tackling projects in frameworks. The project also includes basic testing using **Jest**.
+This is a simple countdown timer that allows users to set a custom end time and heading. The project was created as a starter portfolio piece and as a tool for counting down to an event for a friend. The app is written in **Vanilla JS** as a warm-up before tackling projects in frameworks. The project also includes basic testing using **Jest**, and E2E in **Playwright**.
 
 ### Key Features
 
@@ -26,9 +26,3 @@ To make changes to this project, follow these steps:
 - Install the necessary dependencies `npm install`
 - Start local server with disabled cache `http-server -c-1`
 - Open the link provided in the terminal or go to http://127.0.0.1:8080 in your browser.
-
-### TODO:
-
-Some things need to be fixed:
-
-- Jest tests created along with JS code
