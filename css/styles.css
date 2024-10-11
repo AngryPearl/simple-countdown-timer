@@ -382,6 +382,9 @@ input:checked + .slider:before {
 }
 
 /* Confetti */
+#deadline-confetti-container {
+  display: none;
+}
 .confetti {
   width: 15px;
   height: 15px;

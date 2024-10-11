@@ -19,9 +19,13 @@
       href="https://fonts.googleapis.com/css2?family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap"
       rel="stylesheet"
     />
+    <script type="module">
+      // done for jest testing
+      import { startCountdown } from "./src/app.js";
+      startCountdown();
+    </script>
   </head>
   <body>
-    <!-- ARIA labels, accessibility -->
     <div class="flex-container">
       <main>
         <header>
@@ -169,6 +173,5 @@
       </section>
       <div id="overlay" class="overlay hidden"></div>
     </div>
-    <script src="/src/app.js" type="module"></script>
   </body>
 </html>

@@ -4,7 +4,7 @@ class CountdownTimer {
   }
 
   getDefaultDeadline() {
-    let defaultDate = new Date();
+    const defaultDate = new Date();
     defaultDate.setDate(defaultDate.getDate() + 10);
     return defaultDate;
   }
@@ -13,24 +13,27 @@ class CountdownTimer {
     this.deadline = new Date(newDeadline);
   }
 
+  saveChanges() {
+    const timeInputValue = document.getElementById("deadline-input").value;
+    localStorage.setItem("deadline-value", timeInputValue);
+    this.setDeadline(timeInputValue);
+
+    const textInputValue = document.getElementById("heading-text-input").value;
+    localStorage.setItem("text-value", textInputValue);
+    document.getElementById("heading-primary").innerText = textInputValue;
+  }
+
   getTimeRemaining() {
     const currentTime = new Date();
     const remaining = this.deadline - currentTime;
+    const isTimeUp = remaining < 0;
 
     return {
-      days: Math.floor(remaining / (1000 * 60 * 60 * 24))
-        .toString()
-        .padStart(2, "0"),
-      hours: Math.floor((remaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
-        .toString()
-        .padStart(2, "0"),
-      minutes: Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60))
-        .toString()
-        .padStart(2, "0"),
-      seconds: Math.floor((remaining % (1000 * 60)) / 1000)
-        .toString()
-        .padStart(2, "0"),
-      isTimeUp: remaining < 0,
+      days: isTimeUp ? "fi" : Math.floor(remaining / 86400000), // 1000ms * 60s * 60s * 24s
+      hours: isTimeUp ? "ni" : Math.floor((remaining % 86400000) / 3600000), // 1000ms * 60s * 60s
+      minutes: isTimeUp ? "sh" : Math.floor((remaining % 3600000) / 60000), // 1000ms * 60s
+      seconds: isTimeUp ? "🎉" : Math.floor((remaining % 60000) / 1000), // 1000ms
+      isTimeUp,
     };
   }
 }
@@ -59,35 +62,29 @@ class CountdownUIUpdater {
 
       if (timeLeft.isTimeUp) {
         // flip cards are on the top
-        this.updateFlipCards("days", "fi");
-        this.updateFlipCards("hours", "ni");
-        this.updateFlipCards("minutes", "sh");
-        this.updateFlipCards("seconds", "🎉");
-        this.stopInterval();
+        this.updateAllUnits(timeLeft, this.updateFlipCards.bind(this)); // 'this' context is lost outside of func
 
+        this.stopInterval();
         this.confettiContainer.style.display = "block";
       } else {
-        this.updateCard("days", timeLeft.days);
-        this.updateCard("hours", timeLeft.hours);
-        this.updateCard("minutes", timeLeft.minutes);
-        this.updateCard("seconds", timeLeft.seconds);
+        this.updateAllUnits(timeLeft, this.updateCard.bind(this));
+        this.confettiContainer.style.display = "none";
 
-        this.confettiContainer.style.display = "none"; //move to modal
         setTimeout(() => {
-          this.updateFlipCards("days", timeLeft.days);
-          this.updateFlipCards("hours", timeLeft.hours);
-          this.updateFlipCards("minutes", timeLeft.minutes);
-          this.updateFlipCards("seconds", timeLeft.seconds);
+          this.updateAllUnits(timeLeft, this.updateFlipCards.bind(this));
         }, 400);
 
         setTimeout(() => {
-          this.updateCardBottom("days", timeLeft.days);
-          this.updateCardBottom("hours", timeLeft.hours);
-          this.updateCardBottom("minutes", timeLeft.minutes);
-          this.updateCardBottom("seconds", timeLeft.seconds);
+          this.updateAllUnits(timeLeft, this.updateCardBottom.bind(this));
         }, 800);
       }
     }, 1000);
+  }
+
+  updateAllUnits(timeLeft, updater) {
+    ["days", "hours", "minutes", "seconds"].forEach((unit) => {
+      updater(unit, timeLeft[unit]);
+    });
   }
 
   stopInterval() {
@@ -117,7 +114,7 @@ class CountdownUIUpdater {
   updateCard(unit, value) {
     const topElement = this[`${unit}Card`].querySelector(".card-top");
 
-    if (topElement.innerText !== value) {
+    if (topElement.innerText != value) {
       topElement.innerText = value;
       this.flipCard(unit, value);
     }
@@ -174,7 +171,7 @@ class ModalManager {
       this.showModal();
     });
     this.saveButton.addEventListener("click", () => {
-      this.saveChanges();
+      this.timer.saveChanges();
       this.uiUpdater.stopInterval();
       this.uiUpdater.startUpdating(this.timer);
       this.hideModal();
@@ -189,16 +186,6 @@ class ModalManager {
   hideModal() {
     this.modalElement.classList.add("hidden");
     this.overlayElement.classList.add("hidden");
-  }
-
-  saveChanges() {
-    const timeInputValue = document.getElementById("deadline-input").value;
-    localStorage.setItem("deadline-value", timeInputValue);
-    this.timer.setDeadline(timeInputValue);
-
-    const textInputValue = document.getElementById("heading-text-input").value;
-    localStorage.setItem("text-value", textInputValue);
-    document.getElementById("heading-primary").innerText = textInputValue;
   }
 }
 
@@ -243,4 +230,10 @@ function startCountdown() {
   uiUpdater.startUpdating(timer);
 }
 
-startCountdown();
+export {
+  CountdownTimer,
+  ModalManager,
+  CountdownUIUpdater,
+  loadFromLocalStorage,
+  startCountdown,
+};
